@@ -1,0 +1,26 @@
+<!-- Button trigger modal -->
+<a href="" class="details ms-5 text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{task.id}}">View details</a>
+
+<!-- Modal -->
+<div class="modal fade mt-5" id="exampleModal{{task.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{task.category}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Detail : {{task.details}}</p>
+        <p>Date : {{task.task_date}}</p>
+        <p>Time : {{task.task_time}}</p>
+      </div>
+      <div class="modal-footer">
+        <div class="fit-content">
+          <a href="{% url 'todo-delete' task.id re_dir %}" id="delete">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

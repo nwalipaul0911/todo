@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="container-fluid py-5 grid-items-center">
+    <form action="" method="POST" class="p-5 my-5 bg-light rounded shadow">
+      {% csrf_token %}
+      {{form.email}}
+      {{form.first_name}}
+      {{form.last_name}}
+      {{form.username}}
+      {{form.password1}}
+      {{form.password2}}
+      <input type="submit" value="Register" class="btn btn-primary">
+    </form>
+  </div>
+{% endblock main %}

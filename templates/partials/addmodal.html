@@ -1,0 +1,28 @@
+<!-- Button trigger modal -->
+<p><i class="fa-solid fa-plus fs-5 fw-bold me-3 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>Add a new task.</p>
+
+<!-- Modal -->
+<div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new Task.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST" class="my-3 mx-auto">
+          {% csrf_token %}
+          {{form.category}}
+          {{form.details}}
+          {{form.task_date}}
+          {{form.task_time}}
+  
+          <div style="width:fit-content" class="ms-auto mt-4">
+            <input type="submit" value="Add Task" class="btn btn-primary add-btn">
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
