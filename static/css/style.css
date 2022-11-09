@@ -17,7 +17,7 @@ input, textarea, select{
   max-height: 50px;
   display:block;
   padding: 5px 0px;
-  margin-bottom: 10px !important; 
+  margin-bottom: 20px !important; 
   border:none;
   border-bottom: 1px solid rgb(165, 165, 165);
   background-color: transparent;
@@ -35,4 +35,20 @@ a.details{
 a.details:hover{
   text-decoration: underline;
   color:rgb(66, 66, 209);
+}
+
+#type-js::after{
+  content:'_';
+  font-size: larger;
+  font-weight: bold;
+  animation: text-cursor 1s step-end infinite
+}
+
+@keyframes text-cursor {
+  from, to { color:transparent }
+  50% { color:black}
+}
+
+.fa-trash:hover{
+  cursor:pointer;
 }

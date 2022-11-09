@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load humanize %}
 
 {% block main %}
@@ -11,7 +10,8 @@
       {% endif %}
         
     </p>
-    <p class="text-secondary">You have {{tasks.count}} task today.</p>
+    <p class="text-secondary" id="task-length"></p>
+    
     <div class="d-flex justify-content-between align-items-baseline">
       
         {% include 'partials/addmodal.html' %}
@@ -20,11 +20,9 @@
     </div>
     
     {% for task in tasks %}
-    <div class="container bg-white rounded shadow">
+    <div class="container bg-white rounded shadow task-container" id="{{task.id}}">
       <div class="row my-3 py-3">
-        <div class="col-1"><a href="{% url 'todo-done' task.id re_dir %}">
-          <i class="fa-regular fa-square text-secondary" name="Done" title="Mark as done"></i>
-        </a></div>
+        <div class="col-1"><input type="checkbox" id="{{task.id}}" class="checkboxes" title="Mark as read"></div>
         <div class="col-10">
           <div class="col-12 d-flex justify-content-between">
             <h6 class="text-dark">{{task.category}}</h6>
@@ -41,5 +39,38 @@
     </div>
     {% endfor %} 
   </div>
+  <script>
+    var checkboxes = document.querySelectorAll('.checkboxes')
+    var task_container = document.querySelectorAll('.task-container')
+    checkboxes.forEach(element=>{
+      var url = `http://127.0.0.1:9000/api/${element.id}`
+      element.addEventListener('click', 
+      async function task_status(){
+        const get_feedback = await fetch(url)
+        const feedback = await get_feedback.json()
+        const send_status = await fetch(url, {
+          method: 'PUT',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            category: `${feedback.category}`, 
+            details: `${feedback.details}`, 
+            task_date: `${feedback.task_date}`, 
+            task_time: `${feedback.task_time}`, 
+            status: element.checked
+          })
+        })
+        const result = await send_status.json()
+        if(result.status == true){
+          task_container.forEach(task => {
+            if(task.id == element.id){
+              task.remove()
+            }
+          })
+        }
+      })
+    })
+  </script>
 {% endblock main %}
   

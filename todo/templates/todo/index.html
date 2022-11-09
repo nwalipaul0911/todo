@@ -1,6 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
 
 {% block main %}
-  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 py-5 my-5">
+        <p class="fw-bolder fs-1 mt-2 mx-auto" >Stay organized and effective with your daily tasks.</p>
+        <p id="type-js"></p>
+        <div style="width:fit-content" class="mt-4">
+          <a href="{% url 'user-login' %}" class="btn btn-primary">Start for free</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 py-5 mt-2 mb-5">
+        <img src="{% static 'images/wepik-photo-mode-2022109-112758.png' %}" alt="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let letter = 0;
+    const text = "Do-day is a simple and efficient task manager app that helps you organize and keep track of your daily activities";
+    function typeText() {
+      if (letter < text.length) {
+        document.getElementById("type-js").innerHTML += text.charAt(letter);
+        letter++;
+        let speed = Math.floor(Math.random() * 150) + 50;
+        console.log(speed)
+        setTimeout(typeText, speed);
+      }
+    }
+    typeText();
+  });
+  </script>
 {% endblock main %}
   

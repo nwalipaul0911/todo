@@ -2,9 +2,9 @@
   <div class="container-fluid">
     
     {% if user.is_authenticated %}
-    <a href="{% url 'todo-home' %}" class="navbar-brand text-light ms-5">To Do</a>
+    <a href="{% url 'todo-home' %}" class="navbar-brand text-light ms-5">Do-day</a>
     {% else %}
-    <a href="{% url 'todo-index' %}" class="navbar-brand text-light ms-5">To Do</a>
+    <a href="{% url 'todo-index' %}" class="navbar-brand text-light ms-5">Do-day</a>
     {% endif %}
       
     
