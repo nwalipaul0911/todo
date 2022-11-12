@@ -39,7 +39,7 @@
     var checkboxes = document.querySelectorAll('.checkboxes')
     var task_container = document.querySelectorAll('.task-container')
     checkboxes.forEach(element=>{
-      var url = `http://127.0.0.1:9000/api/${element.id}`
+      var url = `https://doday.up.railway.app/api/${element.id}`
       async function task_status1(){
         const get_status = await fetch(url)
         const result = await get_status.json()

@@ -27,7 +27,7 @@
   tasks.forEach(element=>{
     element.addEventListener('click', 
     async function delete_task(){
-      const api = await fetch(`http://127.0.0.1:9000/api/${element.id}`, {
+      const api = await fetch(`https://doday.up.railway.app/api/${element.id}`, {
         method: 'DELETE'
       })
 
@@ -37,7 +37,7 @@
         }
       })
 
-      const today_length = await fetch('http://127.0.0.1:9000/api')
+      const today_length = await fetch('https://doday.up.railway.app/api')
       const today_result = await today_length.json()
       document.querySelector('#task-length').innerHTML = `You have ${today_result.length} tasks todo today.`
     })

@@ -43,8 +43,8 @@
     var checkboxes = document.querySelectorAll('.checkboxes')
     var task_container = document.querySelectorAll('.task-container')
     checkboxes.forEach(element=>{
-      var url = `http://127.0.0.1:9000/api/${element.id}`
-      var url2 = 'http://127.0.0.1:9000/api'
+      var url = `https://doday.up.railway.app/api/${element.id}`
+      var url2 = 'https://doday.up.railway.app/api'
       element.addEventListener('click', 
       async function task_status(){
         const get_feedback = await fetch(url)
