@@ -24,7 +24,7 @@ def user_register(request):
   form = UserForm(request.POST)
   if request.method == 'POST':
     form = UserForm(request.POST)
-    if form.is_valid:
+    if form.is_valid():
       form.save()
       return redirect('todo-home')
   context = {
