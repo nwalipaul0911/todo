@@ -94,6 +94,18 @@ DATABASES = {
     }  
 } 
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mydb',
+#         'USER': 'root',
+#         'PASSWORD': 'admin',
+#         'HOST':'localhost',
+#         'PORT':'3306',
+#     }
+# }
+
 # User model
 AUTH_USER_MODEL = 'user.User'
 
