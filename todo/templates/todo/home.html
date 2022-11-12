@@ -10,7 +10,7 @@
       {% endif %}
         
     </p>
-    <p class="text-secondary" id="task-length"></p>
+    <p class="text-secondary" id="task-length"> You have {{tasks.count}} tasks todo today.</p>
     
     <div class="d-flex justify-content-between align-items-baseline">
       
@@ -44,6 +44,7 @@
     var task_container = document.querySelectorAll('.task-container')
     checkboxes.forEach(element=>{
       var url = `http://127.0.0.1:9000/api/${element.id}`
+      var url2 = 'http://127.0.0.1:9000/api'
       element.addEventListener('click', 
       async function task_status(){
         const get_feedback = await fetch(url)
@@ -69,8 +70,12 @@
             }
           })
         }
+        const today_length = await fetch(url2)
+        const today_result = await today_length.json()
+        document.querySelector('#task-length').innerHTML = `You have ${today_result.length} tasks todo today.`
       })
     })
   </script>
+
 {% endblock main %}
   

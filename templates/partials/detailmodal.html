@@ -16,35 +16,30 @@
       </div>
       <div class="modal-footer">
         <div class="fit-content">
-            <i class="fa-solid fa-trash text-danger delete" id="{{task.id}}" title="Delete task" data-bs-dismiss="modal" aria-label="Close"></i>
+            <i class="fa-solid fa-trash text-danger delete" id="{{task.id}}" title="Delete task" data-bs-dismiss="modal"></i>
         </div>
       </div>
     </div>
   </div>
 </div>
 <script>
-  var task_ = document.querySelector('.delete')
-  task_.addEventListener('click', 
+  var tasks = document.querySelectorAll('.delete')
+  tasks.forEach(element=>{
+    element.addEventListener('click', 
     async function delete_task(){
-      const get_feedback = await fetch(`http://127.0.0.1:9000/api/${task_.id}`)
-      const feedback = await get_feedback.json()
-      const this_task = await fetch(`http://127.0.0.1:9000/api/${task_.id}`,{
-        method : 'DELETE',
-        headers: {
-         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          category: `${feedback.category}`, 
-          details: `${feedback.details}`, 
-          task_date: `${feedback.task_date}`, 
-          task_time: `${feedback.task_time}`,
-          status: `${feedback.status}`
+      const api = await fetch(`http://127.0.0.1:9000/api/${element.id}`, {
+        method: 'DELETE'
       })
-    })
-    task_container.forEach(task => {
-      if(task.id == task_.id){
-        task.remove()
-      }
+
+      task_container.forEach(task => {
+        if(task.id == element.id){
+          task.remove()
+        }
+      })
+
+      const today_length = await fetch('http://127.0.0.1:9000/api')
+      const today_result = await today_length.json()
+      document.querySelector('#task-length').innerHTML = `You have ${today_result.length} tasks todo today.`
     })
   })
 </script>
