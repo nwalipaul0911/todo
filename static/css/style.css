@@ -24,6 +24,9 @@ input, textarea, select{
   width:100%;
   outline: none;
 }
+input[type="checkbox"]:hover{
+  cursor: pointer;
+}
 .add-btn{
   width:fit-content;
   padding:5px 10px;
@@ -35,18 +38,6 @@ a.details{
 a.details:hover{
   text-decoration: underline;
   color:rgb(66, 66, 209);
-}
-
-#type-js::after{
-  content:'_';
-  font-size: larger;
-  font-weight: bold;
-  animation: text-cursor 1s step-end infinite
-}
-
-@keyframes text-cursor {
-  from, to { color:transparent }
-  50% { color:black}
 }
 
 .fa-trash:hover{

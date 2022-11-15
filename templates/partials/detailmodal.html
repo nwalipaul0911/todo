@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<a href="" class="details ms-5 text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{task.id}}">View details</a>
+<div class="ms-auto" style="width:fit-content;"><a href="" class="details ms-5 text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{task.id}}">View details</a></div>
 
 <!-- Modal -->
 <div class="modal fade mt-5" id="exampleModal{{task.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,9 +15,11 @@
         <p>Time : {{task.task_time}}</p>
       </div>
       <div class="modal-footer">
-        <div class="fit-content">
-            <i class="fa-solid fa-trash text-danger delete" id="{{task.id}}" title="Delete task" data-bs-dismiss="modal"></i>
-        </div>
+          <label for="done">Mark as read</label>
+          <div style="width:fit-content"><input type="checkbox" id="{{task.id}}" name="done" class="checkboxes mt-4 me-3" title="Mark as read"></div>
+          <label for="delete">Delete</label>
+          <i class="fa-solid fa-trash text-danger delete" id="{{task.id}}" title="Delete task" data-bs-dismiss="modal" name="delete"></i>
+        
       </div>
     </div>
   </div>
