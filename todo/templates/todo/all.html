@@ -20,8 +20,8 @@
         {% for task in tasks %}
         <div class="col-md-4 col-sm-12 task-container mt-4" id="{{task.id}}">
           <div class="card col-10 mx-auto shadow">
-            <div class="card-header d-flex justify-content-between">
-              <h6 class="text-dark col-4">{{task.category}}</h6>
+            <div class="card-header d-flex justify-content-between bg-dark">
+              <h6 class="text-light col-4">{{task.category}}</h6>
               <p class="text-secondary"><small>{{task.task_date|naturalday|capfirst}} {{task.task_time}}</small></p>
             </div>
             <div class="card-body">
